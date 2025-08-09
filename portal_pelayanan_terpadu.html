@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portal Pelayanan Terpadu - Template Static</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --green:#ff00a2;
+      --green-dark:#144e2a;
+      --accent:#ffb13b; /* oranye */
+      --muted:#f2f2f2;
+      --card-bg: rgba(0,0,0,0.45);
+      --glass: rgba(255,255,255,0.06);
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Montserrat',system-ui,Arial; margin:0; color:#eee; background:#0f1720}
+
+    /* Header */
+    .topbar{background:linear-gradient(90deg,var(--green-dark),var(--green)); padding:10px 0; color:white;}
+    .container{max-width:var(--max-width); margin:0 auto; padding:0 16px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{height:46px; width:46px; border-radius:6px}
+    .brand h1{font-size:18px; margin:0}
+    .brand p{margin:0; font-size:12px; opacity:0.9}
+
+    /* Hero */
+    .hero{
+      min-height:520px; display:flex; align-items:center; justify-content:center;
+      background-image: url('bg.jpg');
+      background-size:cover; background-position:center; position:relative; padding:60px 0;
+    }
+    .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.55) 10%, rgba(0,0,0,0.75) 100%)}
+    .hero-inner{position:relative; z-index:2; width:100%; max-width:var(--max-width); margin:0 auto; text-align:center;}
+    .title{font-size:44px; letter-spacing:1px; color:var(--accent); font-weight:700; margin:0 0 8px}
+    .subtitle{margin:0 0 28px; color:#e6f5e9; opacity:0.95}
+
+    /* Search */
+    .search-wrap{display:flex; justify-content:center; margin-bottom:34px}
+    .search{width:90%; max-width:760px; display:flex; background:var(--muted); border-radius:40px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.35)}
+    .search input{flex:1; border:0; padding:18px 22px; font-size:16px; outline:none}
+    .search button{background:var(--accent); border:0; padding:0 22px; display:flex; align-items:center; gap:8px; font-weight:700}
+
+    /* Services grid */
+    .services{padding:40px 0 90px; background:linear-gradient(180deg, transparent, rgba(0,0,0,0.4));}
+    .grid{max-width:var(--max-width); margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:28px; padding:0 16px}
+
+    /* Hexagon card */
+    .service-card{display:flex; flex-direction:column; align-items:center; gap:10px}
+    .hex{
+      width:120px; height:110px; position:relative; background:linear-gradient(135deg,var(--green), #2fb36a); clip-path:polygon(25% 6.7%,75% 6.7%,100% 50%,75% 93.3%,25% 93.3%,0% 50%);
+      display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(0,0,0,0.4); transition:transform .2s ease;
+    }
+    .hex.alt{background:linear-gradient(135deg,var(--accent), #ff8f2f)}
+    .hex .icon{font-size:34px; color:white}
+    .hex:hover{transform:translateY(-8px) scale(1.03)}
+
+    .label{background:var(--card-bg); padding:8px 12px; border-radius:8px; font-weight:700; color:#fff; font-size:13px; text-align:center; width:140px}
+
+    /* small screens */
+    @media (max-width:600px){
+      .title{font-size:28px}
+      .hex{width:90px; height:82px}
+      .label{width:120px; font-size:12px}
+    }
+
+    /* Footer */
+    footer{padding:28px 0; text-align:center; color:#bfcfc0}
+
+    /* Hidden utility */
+    .sr-only{position:absolute; left:-10000px;}
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center">
+      <div class="brand">
+        <img src="logo-placeholder.png" alt="logo">
+        <div>
+          <h1>SENYUM - Portal Pelayanan</h1>
+          <p>Sistem Informasi Layanan Unggulan Masyarakat</p>
+        </div>
+      </div>
+      <div style="font-size:14px; opacity:0.95">Kontak: <strong>024-xxxxxxx</strong></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="overlay"></div>
+      <div class="hero-inner">
+        <h2 class="title">LAYANAN SENYUM</h2>
+        <p class="subtitle">Layanan SENYUM yang dapat diakses langsung oleh masyarakat secara mandiri</p>
+
+        <div class="search-wrap">
+          <div class="search" role="search">
+            <input id="searchInput" type="search" placeholder="Cari Layanan (contoh: Pengaduan, Haji, Zakat...)" aria-label="Cari layanan">
+            <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i> Cari</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="grid" id="servicesGrid">
+
+        <!-- contoh kartu layanan -->
+        <div class="service-card" data-name="Berita">
+          <div class="hex"><i class="fa-solid fa-newspaper icon"></i></div>
+          <div class="label">BERITA</div>
+        </div>
+
+        <div class="service-card" data-name="Sekjen">
+          <div class="hex alt"><i class="fa-solid fa-user-tie icon"></i></div>
+          <div class="label">SEKJEN</div>
+        </div>
+
+        <div class="service-card" data-name="Bimas Islam">
+          <div class="hex"><i class="fa-solid fa-mosque icon"></i></div>
+          <div class="label">BIMAS ISLAM</div>
+        </div>
+
+        <div class="service-card" data-name="Haji Umrah">
+          <div class="hex alt"><i class="fa-solid fa-kaaba icon"></i></div>
+          <div class="label">HAJI & UMRAH</div>
+        </div>
+
+        <div class="service-card" data-name="Pendma">
+          <div class="hex"><i class="fa-solid fa-house-chimney icon"></i></div>
+          <div class="label">PENDMA</div>
+        </div>
+
+        <div class="service-card" data-name="PAIS">
+          <div class="hex alt"><i class="fa-solid fa-book-quran icon"></i></div>
+          <div class="label">PAIS</div>
+        </div>
+
+        <div class="service-card" data-name="Pontren">
+          <div class="hex"><i class="fa-solid fa-school icon"></i></div>
+          <div class="label">PD PONTREN</div>
+        </div>
+
+        <div class="service-card" data-name="Zakat Wakaf">
+          <div class="hex alt"><i class="fa-solid fa-hand-holding-dollar icon"></i></div>
+          <div class="label">ZAKAT WAKAF</div>
+        </div>
+
+        <div class="service-card" data-name="Layanan Kristen">
+          <div class="hex"><i class="fa-solid fa-church icon"></i></div>
+          <div class="label">LAYANAN KRISTEN</div>
+        </div>
+
+        <div class="service-card" data-name="Layanan Buddha">
+          <div class="hex alt"><i class="fa-solid fa-buddhism icon"></i></div>
+          <div class="label">LAYANAN BUDDHA</div>
+        </div>
+
+        <div class="service-card" data-name="Layanan Katolik">
+          <div class="hex"><i class="fa-solid fa-church icon"></i></div>
+          <div class="label">LAYANAN KATOLIK</div>
+        </div>
+
+        <div class="service-card" data-name="Pengaduan">
+          <div class="hex alt"><i class="fa-solid fa-comments icon"></i></div>
+          <div class="label">PENGADUAN</div>
+        </div>
+
+        <div class="service-card" data-name="Unit Pengadaan">
+          <div class="hex"><i class="fa-solid fa-box-open icon"></i></div>
+          <div class="label">UNIT PENGADAAN</div>
+        </div>
+
+        <div class="service-card" data-name="Kembang ZIO">
+          <div class="hex alt"><i class="fa-solid fa-seedling icon"></i></div>
+          <div class="label">KEMBANG ZIO</div>
+        </div>
+
+        <div class="service-card" data-name="Lacak Layanan">
+          <div class="hex"><i class="fa-solid fa-location-dot icon"></i></div>
+          <div class="label">LACAK LAYANAN</div>
+        </div>
+
+        <div class="service-card" data-name="Buku Tamu">
+          <div class="hex alt"><i class="fa-solid fa-address-book icon"></i></div>
+          <div class="label">BUKU TAMU</div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">&copy; 2025 Portal Pelayanan Terpadu — Template statis. Ganti gambar latar (bg.jpg) dan logo (logo-placeholder.png) dengan asset kamu.</div>
+  </footer>
+
+  <script>
+    // Simple search filter for services
+    const input = document.getElementById('searchInput');
+    const grid = document.getElementById('servicesGrid');
+    const cards = Array.from(grid.querySelectorAll('.service-card'));
+
+    function filterServices(){
+      const q = input.value.trim().toLowerCase();
+      if(!q){
+        cards.forEach(c=> c.style.display='flex');
+        return;
+      }
+      cards.forEach(c=>{
+        const name = c.dataset.name.toLowerCase();
+        if(name.includes(q)) c.style.display='flex'; else c.style.display='none';
+      })
+    }
+
+    input.addEventListener('input', filterServices);
+    document.getElementById('searchBtn').addEventListener('click', function(){ filterServices(); input.focus(); });
+
+    // Make hexagon clickable (example) — replace with real links
+    cards.forEach(c=>{
+      c.addEventListener('click', ()=>{
+        const nama = c.dataset.name;
+        alert('Buka layanan: '+nama+' (ganti alert ini dengan navigasi/link)');
+      })
+    })
+  </script>
+</body>
+</html>
