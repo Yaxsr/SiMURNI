@@ -1,0 +1,194 @@
+:root {
+  --green: #1f7a3a;
+  --green-light: #4caf50;
+  --white: #ffffff;
+  --max-width: 1200px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', system-ui, Arial;
+  margin: 0;
+  color: #222;
+  background-color: var(--white);
+}
+
+/* TOPBAR */
+.topbar {
+  background: linear-gradient(90deg, var(--green), var(--green-light));
+  padding: 10px 0;
+  color: white;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand img {
+  height: 46px;
+  width: 46px;
+  border-radius: 6px;
+}
+
+.brand h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.brand p {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('Foto Kantor 2.jpg') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed; /* efek parallax di desktop */
+  position: relative;
+  padding: 60px 0;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 44px;
+  letter-spacing: 1px;
+  color: var(--white);
+  font-weight: 700;
+  margin: 0 0 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  margin: 0 0 28px;
+  color: #fff;
+  opacity: 0.95;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+
+.search {
+  width: 90%;
+  max-width: 760px;
+  display: flex;
+  background: var(--white);
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.search input {
+  flex: 1;
+  border: 0;
+  padding: 18px 22px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search button {
+  background: var(--green);
+  color: white;
+  border: 0;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* SERVICES */
+.services {
+  padding: 40px 0 90px;
+  background: transparent;
+}
+
+.grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 28px;
+  padding: 0 16px;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: linear-gradient(90deg, var(--green), var(--green-light));
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+  color: white;
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: var(--green-light);
+}
+
+.service-card .icon {
+  font-size: 36px;
+}
+
+.label {
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+  }
+  .label {
+    font-size: 12px;
+  }
+  .hero {
+    min-height: 100vh;
+    background-position: center top;
+    background-attachment: scroll; /* hilangkan parallax di mobile */
+  }
+}
+
+footer {
+  padding: 28px 0;
+  text-align: center;
+  color: #333;
+}
